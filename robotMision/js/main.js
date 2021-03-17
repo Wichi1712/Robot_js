@@ -22,6 +22,15 @@ var meta_y;
 var current_level=6;
 
 var jump;
+//----------------NIVELES-------------
+//El nivel actual es 5
+/*
+* 0 = espacio libre
+* 1 = roca
+* 2 = X
+* 3 = player
+* 4 = planta
+ */
 
 var niveles = new Array();
 
@@ -50,7 +59,7 @@ niveles[4] =  [2,1,0,1,0,1,0,0,
               1,0,1,0,1,0,1,0,
               1,0,0,3,0,1,0,1];
 
-niveles[5] =  [2,1,4,1,4,1,4,1,
+niveles[5] =  [2,1,4,1,4,1,4,1,//nivel actual
               0,1,0,1,0,1,0,1,
               1,0,4,4,1,0,1,0,
               4,0,4,1,0,1,3,1];
@@ -150,21 +159,21 @@ function init(){
 
 
 function leerComandos(){
-    $('#dangerMsj').hide();
+    $('#dangerMsj').hide();//Oculta mensaje
       
     var lines = $('#comandos').val().split(';');
     for(var i = 0;i < lines.length - 1; i++){
-        //code here using lines[i] which will give you each line
+        //codifique aquí usando las líneas [i] que le darán cada línea
         if (lines[i].trim() != "")          
             if (!validarComando(lines[i].trim()))
                  return;                         
         
     }
     if(lines.length > 1){
-      myFunction(lista);
+      myFunction(lista);//lista es un array
     }else
     {
-       $('#dangerMsj').show();
+       $('#dangerMsj').show();//muestra mensaje
     }
 }
 function asignarComandos(comando, instruccion){
@@ -204,8 +213,8 @@ function validarComando(instruccion, i){
       return true;
     }*/
 //Test Garifuna
-     if (findCommand(inst.toUpperCase().trim())){ 
-        asignarComandos(findCommand(inst.toUpperCase().trim()), instruccion);
+     if (encontrarComando(inst.toUpperCase().trim())){ 
+        asignarComandos(encontrarComando(inst.toUpperCase().trim()), instruccion);
       return true;
     }
    
@@ -213,7 +222,7 @@ function validarComando(instruccion, i){
    return false;
 }
 
-function findCommand(command){
+function encontrarComando(command){
   var result = false;
    for(var i = 0; i < principalCommands.length; i++) {
       if(principalCommands[i].com == command)
@@ -244,7 +253,7 @@ function findCommand(command){
 }
 
 
-function goGuco(posActual) {
+function player(posActual) {
       pintarCuadro("actual",position_x,position_y);  
       esCoin(position_x,position_y);
       if(esObstaculo(position_x,position_y))
@@ -327,7 +336,7 @@ function myFunction()
 
         window[a](); 
 
-        goGuco(pos);
+        player(pos);
 
       //};
       pos++;

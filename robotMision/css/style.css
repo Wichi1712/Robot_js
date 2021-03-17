@@ -12,7 +12,25 @@
 	font-weight: 400;
 	line-height: 20px;
 }
+/*
 .modal-backdrop {
-   background-color: #242C30;
-}
+	background-color: #242C30;
+ }
+ */
+
+ /*Este le da color al fondo a la página cuando se muestran las instrucciones*/
+ .fade {
+	 background-color: rgba(222, 184, 135, 0.24);
+ }
+
+ /*Color al fondo de las instrucciones*/
+ .modal-body {
+	 background-color: darkorange;
+ }
+
+ /*
+ .container-fluid {
+	 background-color: rgb(92, 91, 56);
+ }
+ */
 
